@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialSpark — Explore</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    (function(){var t=localStorage.getItem('ss_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <i class="fa-solid fa-bolt"></i> SocialSpark
+    </a>
+    <div class="nav-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Search users…" autocomplete="off" />
+      <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-icon" title="Home">
+        <i class="fa-solid fa-house"></i>
+      </a>
+      <a href="explore.html" class="nav-icon active" title="Explore">
+        <i class="fa-solid fa-compass"></i>
+      </a>
+      <a href="#" class="nav-icon" title="Notifications" id="notifBtn">
+        <i class="fa-solid fa-bell"></i>
+        <span class="badge" id="notifBadge" style="display:none"></span>
+      </a>
+      <a href="#" class="nav-icon" title="Toggle theme" id="themeToggle">
+        <i class="fa-solid fa-moon"></i>
+      </a>
+      <div class="nav-avatar-wrap" id="navAvatarWrap">
+        <img src="" alt="avatar" class="nav-avatar" id="navAvatar" />
+        <div class="nav-dropdown">
+          <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+          <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- NOTIFICATIONS PANEL -->
+  <div class="notif-panel" id="notifPanel">
+    <div class="notif-header">
+      <span>Notifications</span>
+      <button id="clearNotifs">Clear all</button>
+    </div>
+    <ul id="notifList"></ul>
+    <p class="notif-empty" id="notifEmpty">No notifications yet.</p>
+  </div>
+  <div class="overlay" id="notifOverlay"></div>
+
+  <main class="explore-layout">
+    <div class="explore-header">
+      <h2><i class="fa-solid fa-compass"></i> Explore</h2>
+      <p>Discover people and trending posts</p>
+    </div>
+
+    <!-- search bar inside explore -->
+    <div class="explore-search-wrap">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="exploreSearch" placeholder="Search posts or #tags…" />
+    </div>
+
+    <div class="explore-grid">
+      <!-- People -->
+      <div class="card explore-section">
+        <h3><i class="fa-solid fa-users"></i> People</h3>
+        <ul id="exploreUsers"></ul>
+      </div>
+
+      <!-- Trending posts -->
+      <div class="explore-posts">
+        <h3><i class="fa-solid fa-fire"></i> Trending Posts</h3>
+        <div id="exploreFeed"></div>
+        <p class="feed-empty" id="exploreFeedEmpty" style="display:none">No posts found.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/explore.js"></script>
+</body>
+</html>

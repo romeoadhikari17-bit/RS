@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialSpark — Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    // Apply saved theme before paint to prevent flash
+    (function(){var t=localStorage.getItem('ss_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <i class="fa-solid fa-bolt"></i> SocialSpark
+    </a>
+    <div class="nav-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Search users…" autocomplete="off" />
+      <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-icon active" title="Home">
+        <i class="fa-solid fa-house"></i>
+      </a>
+      <a href="explore.html" class="nav-icon" title="Explore">
+        <i class="fa-solid fa-compass"></i>
+      </a>
+      <a href="#" class="nav-icon" title="Notifications" id="notifBtn">
+        <i class="fa-solid fa-bell"></i>
+        <span class="badge" id="notifBadge" style="display:none"></span>
+      </a>
+      <a href="#" class="nav-icon" title="Toggle theme" id="themeToggle">
+        <i class="fa-solid fa-moon"></i>
+      </a>
+      <div class="nav-avatar-wrap" id="navAvatarWrap">
+        <img src="" alt="avatar" class="nav-avatar" id="navAvatar" />
+        <div class="nav-dropdown">
+          <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+          <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- NOTIFICATIONS PANEL -->
+  <div class="notif-panel" id="notifPanel">
+    <div class="notif-header">
+      <span>Notifications</span>
+      <button id="clearNotifs">Clear all</button>
+    </div>
+    <ul id="notifList"></ul>
+    <p class="notif-empty" id="notifEmpty">No notifications yet.</p>
+  </div>
+  <div class="overlay" id="notifOverlay"></div>
+
+  <!-- MAIN LAYOUT -->
+  <main class="feed-layout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-left">
+      <div class="card profile-mini">
+        <img src="" alt="avatar" class="profile-mini-avatar" id="sideAvatar" />
+        <div>
+          <p class="profile-mini-name" id="sideDisplayName"></p>
+          <p class="profile-mini-handle" id="sideHandle"></p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-link active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="explore.html" class="sidebar-link"><i class="fa-solid fa-compass"></i> Explore</a>
+        <a href="profile.html" class="sidebar-link"><i class="fa-solid fa-user"></i> Profile</a>
+      </nav>
+      <div class="card suggestions-card" id="suggestionsCard">
+        <h4>Who to follow</h4>
+        <ul id="suggestionsList"></ul>
+      </div>
+    </aside>
+
+    <!-- FEED -->
+    <section class="feed-center">
+      <!-- Compose -->
+      <div class="card compose-card">
+        <div class="compose-top">
+          <img src="" alt="avatar" class="compose-avatar" id="composeAvatar" />
+          <textarea id="postContent" placeholder="What's sparking today?" maxlength="500" rows="3"></textarea>
+        </div>
+        <div class="compose-bottom">
+          <div class="compose-options">
+            <label class="compose-option" title="Add image URL">
+              <i class="fa-solid fa-image"></i>
+              <input type="text" id="postImageUrl" placeholder="Image URL (optional)" />
+            </label>
+          </div>
+          <div class="compose-chars">
+            <span id="charCount">0</span>/500
+          </div>
+          <button class="btn btn-primary" id="postBtn">
+            <i class="fa-solid fa-bolt"></i> Spark
+          </button>
+        </div>
+      </div>
+
+      <!-- Feed tabs -->
+      <div class="feed-tabs">
+        <button class="feed-tab active" data-tab="for-you">For You</button>
+        <button class="feed-tab" data-tab="following">Following</button>
+      </div>
+
+      <!-- Posts -->
+      <div id="feedContainer"></div>
+      <p class="feed-empty" id="feedEmpty" style="display:none">
+        No posts yet. Follow some people or be the first to spark!
+      </p>
+    </section>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar-right">
+      <div class="card trending-card">
+        <h4>Trending Tags</h4>
+        <ul id="trendingList"></ul>
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/feed.js"></script>
+</body>
+</html>

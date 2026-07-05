@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialSpark — Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    (function(){var t=localStorage.getItem('ss_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body class="auth-page">
+
+  <div class="auth-container">
+    <div class="auth-brand">
+      <i class="fa-solid fa-bolt"></i>
+      <span>SocialSpark</span>
+    </div>
+    <p class="auth-tagline">Connect. Share. Spark.</p>
+
+    <!-- TABS -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Login</button>
+      <button class="auth-tab" data-tab="register">Register</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form class="auth-form active" id="loginForm" data-tab="login" novalidate>
+      <div class="form-group">
+        <label for="loginUsername">Username</label>
+        <div class="input-icon">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" id="loginUsername" placeholder="your_username" autocomplete="username" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <div class="input-icon">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required />
+          <button type="button" class="toggle-pw" data-target="loginPassword">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+      </div>
+      <p class="form-error" id="loginError"></p>
+      <button type="submit" class="btn btn-primary btn-full">
+        <i class="fa-solid fa-right-to-bracket"></i> Login
+      </button>
+      
+    </form>
+
+    <!-- REGISTER FORM -->
+    <form class="auth-form" id="registerForm" data-tab="register" novalidate>
+      <div class="form-group">
+        <label for="regDisplayName">Display Name</label>
+        <div class="input-icon">
+          <i class="fa-solid fa-id-card"></i>
+          <input type="text" id="regDisplayName" placeholder="Your Name" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="regUsername">Username</label>
+        <div class="input-icon">
+          <i class="fa-solid fa-at"></i>
+          <input type="text" id="regUsername" placeholder="unique_username" autocomplete="username" required />
+        </div>
+        <small>Letters, numbers, underscores only.</small>
+      </div>
+      <div class="form-group">
+        <label for="regEmail">Email</label>
+        <div class="input-icon">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="regBio">Bio <span class="optional">(optional)</span></label>
+        <div class="input-icon">
+          <i class="fa-solid fa-pen"></i>
+          <input type="text" id="regBio" placeholder="Tell us about yourself…" maxlength="150" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="regPassword">Password</label>
+        <div class="input-icon">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="regPassword" placeholder="min. 6 characters" autocomplete="new-password" required />
+          <button type="button" class="toggle-pw" data-target="regPassword">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="regConfirm">Confirm Password</label>
+        <div class="input-icon">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="regConfirm" placeholder="••••••••" autocomplete="new-password" required />
+        </div>
+      </div>
+      <p class="form-error" id="registerError"></p>
+      <button type="submit" class="btn btn-primary btn-full">
+        <i class="fa-solid fa-user-plus"></i> Create Account
+      </button>
+    </form>
+
+  </div>
+
+  <!-- theme toggle bottom-right -->
+  <button class="floating-theme" id="themeToggle" title="Toggle theme">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
