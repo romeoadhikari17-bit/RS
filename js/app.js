@@ -469,4 +469,3 @@ if (document.getElementById('trendingList')) {
     list.appendChild(li);
   });
 }
-
