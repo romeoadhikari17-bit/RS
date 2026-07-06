@@ -24,8 +24,14 @@ const DB = (() => {
     return `data:image/svg+xml;base64,${btoa(svg)}`;
   };
 
-  // ── seed demo users if DB is empty ───────────
-  
+  // ── seed empty database if DB is empty ────────
+  const seed = () => {
+    if (read('ss_users').length) return;
+
+    write('ss_users', []);
+    write('ss_posts', []);
+    write('ss_notifications', []);
+  };
 
   seed();
 
