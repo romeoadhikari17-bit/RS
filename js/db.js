@@ -25,58 +25,7 @@ const DB = (() => {
   };
 
   // ── seed demo users if DB is empty ───────────
-  const seed = () => {
-    if (read('ss_users').length) return;
-
-    const alice = {
-      id: uid(), username: 'alice', displayName: 'Alice Wonder',
-      email: 'alice@example.com', password: 'password',
-      bio: 'Curiosity-driven explorer. Coffee & code. ☕',
-      avatar: defaultAvatar('alice'), cover: '',
-      followers: [], following: [], createdAt: Date.now() - 86400000 * 10
-    };
-    const bob = {
-      id: uid(), username: 'bob', displayName: 'Bob Builder',
-      email: 'bob@example.com', password: 'password',
-      bio: 'Building things one commit at a time. 🔧',
-      avatar: defaultAvatar('bob'), cover: '',
-      followers: [alice.id], following: [alice.id], createdAt: Date.now() - 86400000 * 7
-    };
-    alice.followers.push(bob.id);
-    alice.following.push(bob.id);
-
-    write('ss_users', [alice, bob]);
-
-    const posts = [
-      {
-        id: uid(), authorId: alice.id,
-        text: "Just joined SocialSpark! 🎉 Excited to connect with everyone here. #hello #firstpost",
-        image: '', likes: [bob.id], comments: [], createdAt: Date.now() - 86400000 * 9
-      },
-      {
-        id: uid(), authorId: bob.id,
-        text: "Beautiful morning for some coding! ☀️ Working on a new open-source project. Stay tuned! #coding #opensource",
-        image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80',
-        likes: [alice.id], comments: [
-          { id: uid(), authorId: alice.id, text: "Can't wait to see it! 🚀", createdAt: Date.now() - 86400000 * 6 }
-        ],
-        createdAt: Date.now() - 86400000 * 6
-      },
-      {
-        id: uid(), authorId: alice.id,
-        text: "Pro tip: take breaks while coding. Your future self will thank you. 💡 #devtips #productivity",
-        image: '', likes: [], comments: [], createdAt: Date.now() - 86400000 * 3
-      },
-      {
-        id: uid(), authorId: bob.id,
-        text: "Shipped the first version! 🎊 Check out the repo. #milestone #shipping",
-        image: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80',
-        likes: [alice.id], comments: [], createdAt: Date.now() - 86400000 * 1
-      }
-    ];
-    write('ss_posts', posts);
-    write('ss_notifications', []);
-  };
+  
 
   seed();
 
